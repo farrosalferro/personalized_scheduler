@@ -1,0 +1,859 @@
+.App {
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.App-header {
+    background-color: #282c34;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Tab Navigation */
+.tabs {
+    display: flex;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tab:hover {
+    background-color: #e8e8e8;
+    color: #333;
+}
+
+.tab.active {
+    color: #1890ff;
+    background-color: #fff;
+}
+
+.tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #1890ff;
+}
+
+/* Auth Styles */
+.auth-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.auth-tab.active {
+    color: #1890ff;
+}
+
+.auth-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #1890ff;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.login-button,
+.register-button,
+.switch-to-register-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background-color 0.2s;
+}
+
+.login-button:hover,
+.register-button:hover {
+    background-color: #40a9ff;
+}
+
+.switch-to-register-button {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+.switch-to-register-button:hover {
+    background-color: #e0e0e0;
+}
+
+.register-prompt {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register-prompt p {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.error-message {
+    background-color: #fff2f0;
+    border: 1px solid #ffccc7;
+    color: #ff4d4f;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.success-message {
+    background-color: #f6ffed;
+    border: 1px solid #b7eb8f;
+    color: #52c41a;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.logout-button {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.App-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.left-panel {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
+}
+
+.right-panel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Updated Task List Styles */
+.task-list {
+    text-align: left;
+    padding: 10px;
+}
+
+.task-date-group {
+    margin-bottom: 25px;
+}
+
+.task-date-group h3 {
+    margin: 0 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.task-items {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    position: relative;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.task-time {
+    font-weight: bold;
+    min-width: 60px;
+    color: #333;
+}
+
+.task-title {
+    flex: 1;
+    font-weight: bold;
+    font-size: 1.05em;
+}
+
+.task-priority {
+    margin: 0 8px;
+}
+
+.task-duration {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.task-details {
+    padding: 8px 0;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.task-description {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.task-time-details {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.task-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.edit-button,
+.delete-button {
+    padding: 5px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.edit-button {
+    background-color: #1890ff;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #40a9ff;
+}
+
+.delete-button {
+    background-color: #ff4d4f;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #ff7875;
+}
+
+.priority-high {
+    border-left: 4px solid #ff4d4f;
+}
+
+.priority-normal {
+    border-left: 4px solid #faad14;
+}
+
+.priority-low {
+    border-left: 4px solid #52c41a;
+}
+
+/* Chat Styles */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    word-break: break-word;
+}
+
+.message.user {
+    background-color: #1890ff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.message.bot {
+    background-color: #f0f0f0;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.message-content {
+    white-space: pre-wrap;
+}
+
+.message-timestamp {
+    font-size: 0.7rem;
+    margin-top: 5px;
+    opacity: 0.7;
+    text-align: right;
+}
+
+.input-area {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.input-area input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.input-area button {
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.input-area button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Typing indicator */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background-color: #666;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.75);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.75);
+        opacity: 0.2;
+    }
+}
+
+/* Calendar specific styles */
+.fc .fc-toolbar-title {
+    font-size: 1.3em;
+}
+
+.fc .fc-button {
+    font-size: 0.8em;
+    padding: 0.3em 0.6em;
+}
+
+/* Chat header styles */
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 10px 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.chat-header h2 {
+    margin: 0;
+}
+
+.clear-chat-btn {
+    background-color: #f5f5f5;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.clear-chat-btn:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+/* Enhanced Chat Styles */
+.message.bot .message-content {
+    text-align: justify;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.message-content strong {
+    font-weight: 600;
+}
+
+.message-content em {
+    font-style: italic;
+    color: inherit;
+}
+
+/* Style for status icons */
+.status-icon {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 1.1em;
+}
+
+.status-icon.success {
+    color: #52c41a;
+}
+
+.status-icon.warning {
+    color: #faad14;
+}
+
+.status-icon.error {
+    color: #f5222d;
+}
+
+/* Style for bullet items */
+.bullet-item {
+    display: block;
+    margin: 3px 0;
+    padding-left: 5px;
+}
+
+/* Style for task confirmation blocks */
+.message.bot pre {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 8px;
+    border-radius: 6px;
+    margin: 8px 0;
+    white-space: pre-wrap;
+    font-family: inherit;
+    font-size: 0.9em;
+}
+
+/* Additional Chat Enhancements for Task Editing */
+.chat-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.help-btn {
+    background-color: #1890ff;
+    color: white;
+    border: 1px solid #1890ff;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.help-btn:hover {
+    background-color: #40a9ff;
+}
+
+.message.bot .task-property {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    color: #333;
+}
+
+.message.bot .success-header {
+    display: block;
+    margin-bottom: 10px;
+    color: #52c41a;
+    font-size: 1.1em;
+}
+
+.message.bot .task-list-header {
+    display: block;
+    margin: 15px 0 5px 0;
+    font-weight: bold;
+    color: #1890ff;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 5px;
+}
+
+.message.bot {
+    line-height: 1.6;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.auth-form button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.auth-form button:hover {
+    background-color: #45a049;
+}
+
+.auth-toggle {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.auth-toggle button {
+    background: none;
+    border: none;
+    color: #4CAF50;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Modal styles for task editing */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+/* Enhanced Form Styles */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+    text-align: left;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Button Styles */
+.button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.button-primary {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button-primary:hover {
+    background-color: #45a049;
+}
+
+.button-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.button-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.button-danger {
+    background-color: #ff4d4f;
+    color: white;
+}
+
+.button-danger:hover {
+    background-color: #ff7875;
+}
+
+.button-loading {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Enhanced Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.modal-close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    line-height: 1;
+}
+
+.modal-close-button:hover {
+    color: #333;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.form-help-text {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.8em;
+    color: #666;
+}
